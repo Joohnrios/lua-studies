@@ -43,3 +43,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 5 — Tables | Done |
 | Lesson 6 — Strings | Done |
 | Lesson 7 — Iterators | Done |
+| Lesson 8 — Functions as values | Done |
