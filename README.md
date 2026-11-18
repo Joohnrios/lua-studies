@@ -41,3 +41,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 3 — Operators and conditionals | Done |
 | Lesson 4 — Loops and functions | Done |
 | Lesson 5 — Tables | Done |
+| Lesson 6 — Strings | Done |
