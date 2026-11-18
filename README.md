@@ -39,3 +39,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 1 — Values and types | Done |
 | Lesson 2 — Variables and scope | Done |
 | Lesson 3 — Operators and conditionals | Done |
+| Lesson 4 — Loops and functions | Done |
