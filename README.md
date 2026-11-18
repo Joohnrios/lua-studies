@@ -36,5 +36,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Module | Status |
 | --- | --- |
 | Lua 5.4 environment | Done |
-| Lesson 1 — Values and types | In progress |
-| Lesson 2 — Variables and scope | Blocked on lesson 1 |
+| Lesson 1 — Values and types | Done |
