@@ -42,3 +42,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 4 — Loops and functions | Done |
 | Lesson 5 — Tables | Done |
 | Lesson 6 — Strings | Done |
+| Lesson 7 — Iterators | Done |
