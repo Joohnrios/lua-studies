@@ -37,3 +37,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | --- | --- |
 | Lua 5.4 environment | Done |
 | Lesson 1 — Values and types | Done |
+| Lesson 2 — Variables and scope | Done |
