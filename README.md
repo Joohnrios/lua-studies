@@ -52,3 +52,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 14 — Objects | Done |
 | Lesson 15 — Errors | Done |
 | Lesson 16 — Files | Done |
+| Lesson 17 — Memory | Done |
