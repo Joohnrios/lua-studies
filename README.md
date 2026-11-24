@@ -45,3 +45,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 7 — Iterators | Done |
 | Lesson 8 — Functions as values | Done |
 | Lesson 9 — Modules and require | Done |
+| Lesson 10 — Metatables | Done |
