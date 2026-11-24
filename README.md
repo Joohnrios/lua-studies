@@ -50,3 +50,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 12 — Closures | Done |
 | Lesson 13 — Coroutines | Done |
 | Lesson 14 — Objects | Done |
+| Lesson 15 — Errors | Done |
