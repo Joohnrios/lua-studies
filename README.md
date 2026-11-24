@@ -49,3 +49,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 11 — Metamethods | Done |
 | Lesson 12 — Closures | Done |
 | Lesson 13 — Coroutines | Done |
+| Lesson 14 — Objects | Done |
