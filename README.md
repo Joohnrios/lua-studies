@@ -48,3 +48,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 10 — Metatables | Done |
 | Lesson 11 — Metamethods | Done |
 | Lesson 12 — Closures | Done |
+| Lesson 13 — Coroutines | Done |
