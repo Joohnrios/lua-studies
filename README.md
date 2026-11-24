@@ -51,3 +51,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 13 — Coroutines | Done |
 | Lesson 14 — Objects | Done |
 | Lesson 15 — Errors | Done |
+| Lesson 16 — Files | Done |
