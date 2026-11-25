@@ -56,3 +56,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 18 — Lua 5.1 and 5.4 | Done |
 | Lesson 19 — LuaJIT | Done |
 | Lesson 20 — Modular architecture | Done |
+| Lesson 21 — Responsibilities | Done |
