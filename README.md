@@ -57,3 +57,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 19 — LuaJIT | Done |
 | Lesson 20 — Modular architecture | Done |
 | Lesson 21 — Responsibilities | Done |
+| Lesson 22 — Encapsulation | Done |
