@@ -59,3 +59,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 21 — Responsibilities | Done |
 | Lesson 22 — Encapsulation | Done |
 | Lesson 23 — Composition and inheritance | Done |
+| Lesson 24 — Strategy | Done |
