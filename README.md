@@ -67,3 +67,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 29 â€” Git practice | Done |
 | Lesson 30 â€” Player | Done |
 | Lesson 31 — Creature | Done |
+| Lesson 32 — Item | Done |
