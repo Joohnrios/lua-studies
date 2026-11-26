@@ -24,6 +24,8 @@ inventory.lua   stacks items by name and removes an empty stack
 pack.lua        drinks one potion when the bag still holds one
 skill.lua       rank rises by one step for every five uses
 practice.lua    trains one use when a drink leaves the bag
+creature.lua    owns hit points, place, and whether it still stands
+watch.lua       asks the creature whether it shares the player's tile
 ```
 
 ## Run an example
@@ -42,6 +44,7 @@ lua lessons/47-ledger/examples/main.lua
 lua lessons/48-item/examples/main.lua
 lua lessons/49-pack/examples/main.lua
 lua lessons/50-practice/examples/main.lua
+lua lessons/51-creature/examples/main.lua
 ```
 
 ## Player
@@ -125,3 +128,11 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Practice
 
 `Practice.new(pack, skill)` stores the two modules. `sip` reads `stock`, calls `drink`, and calls `skill:train(1)` when the stock was above zero. It returns the hit points from the pack. An empty bag does not train. `step` returns `skill:progress`. It does not sip and it does not train.
+
+## Creature
+
+`Creature.new(name, species, hp, position)` stores the name, the species, the hit points, the maximum, and `x`, `y`, `z`. The maximum starts equal to `hp`. `alive` is true while `hp` is above zero. `damage` subtracts and stops at zero. `move` adds `dx` and `dy` and returns the three coordinates. `z` stays. `same_place` compares `x`, `y`, and `z` with the other actor.
+
+## Watch
+
+`Watch.new(player, creature)` stores the two actors. `share` calls `creature:same_place`. The same tile returns `"meet"`. A different tile returns `"apart"`. `ready` is true when that tile is shared and the creature is alive. It does not move and it does not damage.
