@@ -13,6 +13,8 @@ encounter.lua   swings only when the world reports a shared tile
 experience.lua  level and the XP still short of the next level
 reward.lua      grants XP only when the target HP is zero
 spoils.lua      strikes through the encounter, then asks the reward
+quest.lua       goal, progress, and whether the quest is done
+hunt.lua        counts one quest step when a living target faints
 ```
 
 ## Run an example
@@ -25,6 +27,7 @@ lua lessons/41-turn/examples/main.lua
 lua lessons/42-encounter/examples/main.lua
 lua lessons/43-reward/examples/main.lua
 lua lessons/44-spoils/examples/main.lua
+lua lessons/45-hunt/examples/main.lua
 ```
 
 ## Player
@@ -64,3 +67,11 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Spoils
 
 `Spoils.new(encounter, reward)` stores the two modules. `collect` calls `encounter:act` and then `reward:grant`. It returns the level from the reward. `peek` calls `reward:offer` and returns that number. It does not strike, and it leaves the level and the stored XP unchanged.
+
+## Quest
+
+`Quest.new(name, goal)` starts at progress `0`. `advance` adds the amount and stops at the goal. An amount below 1 leaves the progress unchanged. `done` is true when the progress reaches the goal. `status` returns `"done"` or `"open"`.
+
+## Hunt
+
+`Hunt.new(spoils, quest)` stores the two modules. `finish` calls `spoils:collect`. When the target HP was above zero and the call leaves it at zero, the hunt calls `quest:advance(1)`. It returns the level from the spoils. `report` returns the quest status, `"done"` or `"open"`.
