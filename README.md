@@ -61,3 +61,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 23 — Composition and inheritance | Done |
 | Lesson 24 — Strategy | Done |
 | Lesson 25 — Unit tests | Done |
+| Lesson 26 — Debugging | Done |
