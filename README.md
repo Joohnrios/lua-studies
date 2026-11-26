@@ -64,3 +64,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 26 — Debugging | Done |
 | Lesson 27 — Logging | Done |
 | Lesson 28 — Performance | Done |
+| Lesson 29 — Git practice | Done |
