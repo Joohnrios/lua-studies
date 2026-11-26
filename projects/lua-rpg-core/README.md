@@ -26,6 +26,7 @@ skill.lua       rank rises by one step for every five uses
 practice.lua    trains one use when a drink leaves the bag
 creature.lua    owns hit points, place, and whether it still stands
 watch.lua       asks the creature whether it shares the player's tile
+strike.lua      swings only when the creature is ready
 ```
 
 ## Run an example
@@ -45,6 +46,7 @@ lua lessons/48-item/examples/main.lua
 lua lessons/49-pack/examples/main.lua
 lua lessons/50-practice/examples/main.lua
 lua lessons/51-creature/examples/main.lua
+lua lessons/52-strike/examples/main.lua
 ```
 
 ## Player
@@ -136,3 +138,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Watch
 
 `Watch.new(player, creature)` stores the two actors. `share` calls `creature:same_place`. The same tile returns `"meet"`. A different tile returns `"apart"`. `ready` is true when that tile is shared and the creature is alive. It does not move and it does not damage.
+
+## Strike
+
+`Strike.new(watch, battle)` stores the two modules. `hit` returns the creature HP when `watch:ready` is false. Otherwise it calls `battle:swing` and returns the hit points that remain. `hold` returns the creature HP. It does not swing.
