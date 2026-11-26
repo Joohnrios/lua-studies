@@ -8,6 +8,8 @@ Small RPG systems. Each module owns one rule. A caller loads that module with `r
 player.lua      name, hit points, and movement
 world.lua       records whether two actors share a tile
 turn.lua        asks the player to move, then asks the world to look
+battle.lua      subtracts power from a target and stops at zero
+encounter.lua   swings only when the world reports a shared tile
 ```
 
 ## Run an example
@@ -17,6 +19,7 @@ From the repository root:
 ```powershell
 lua lessons/40-rpg-core/examples/main.lua
 lua lessons/41-turn/examples/main.lua
+lua lessons/42-encounter/examples/main.lua
 ```
 
 ## Player
@@ -36,3 +39,11 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Turn
 
 `Turn.new(player, world)` stores the two modules. `play(dx, dy)` calls `player:move` and then `world:look`. It returns the word from the world. `rest` calls `world:look` and returns that word. The player does not move.
+
+## Battle
+
+`Battle.new(power)` stores the power. `swing` subtracts it from `target.hp` and stops at zero. Power below 1 leaves the hit points unchanged.
+
+## Encounter
+
+`Encounter.new(world, battle)` stores the two modules. `act` calls `world:look`. The word `"apart"` returns `target.hp` unchanged. The word `"meet"` calls `battle:swing` and returns the hit points that remain. `spare` calls `world:look` and returns that word. The target HP stays unchanged.

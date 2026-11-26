@@ -77,3 +77,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 39 — Events | Done |
 | Lesson 40 — RPG core | Done |
 | Lesson 41 — Turn | Done |
+| Lesson 42 — Encounter | Done |
