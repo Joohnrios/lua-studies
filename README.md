@@ -33,57 +33,12 @@ lua lessons/01-syntax-and-types/examples/values.lua
 
 ## Progress
 
-| Module | Status |
-| --- | --- |
-| Lua 5.4 environment | Done |
-| Lesson 1 — Values and types | Done |
-| Lesson 2 — Variables and scope | Done |
-| Lesson 3 — Operators and conditionals | Done |
-| Lesson 4 — Loops and functions | Done |
-| Lesson 5 — Tables | Done |
-| Lesson 6 — Strings | Done |
-| Lesson 7 — Iterators | Done |
-| Lesson 8 — Functions as values | Done |
-| Lesson 9 — Modules and require | Done |
-| Lesson 10 — Metatables | Done |
-| Lesson 11 — Metamethods | Done |
-| Lesson 12 — Closures | Done |
-| Lesson 13 — Coroutines | Done |
-| Lesson 14 — Objects | Done |
-| Lesson 15 — Errors | Done |
-| Lesson 16 — Files | Done |
-| Lesson 17 — Memory | Done |
-| Lesson 18 — Lua 5.1 and 5.4 | Done |
-| Lesson 19 — LuaJIT | Done |
-| Lesson 20 — Modular architecture | Done |
-| Lesson 21 — Responsibilities | Done |
-| Lesson 22 — Encapsulation | Done |
-| Lesson 23 — Composition and inheritance | Done |
-| Lesson 24 — Strategy | Done |
-| Lesson 25 — Unit tests | Done |
-| Lesson 26 — Debugging | Done |
-| Lesson 27 — Logging | Done |
-| Lesson 28 — Performance | Done |
-| Lesson 29 — Git practice | Done |
-| Lesson 30 — Player | Done |
-| Lesson 31 — Creature | Done |
-| Lesson 32 — Item | Done |
-| Lesson 33 — Inventory | Done |
-| Lesson 34 — Experience | Done |
-| Lesson 35 — Combat | Done |
-| Lesson 36 — Skills | Done |
-| Lesson 37 — Quest | Done |
-| Lesson 38 — NPC dialogue | Done |
-| Lesson 39 — Events | Done |
-| Lesson 40 — RPG core | Done |
-| Lesson 41 — Turn | Done |
-| Lesson 42 — Encounter | Done |
-| Lesson 43 — Reward | Done |
-| Lesson 44 — Spoils | Done |
-| Lesson 45 — Hunt | Done |
-| Lesson 46 — Brief | Done |
-| Lesson 47 — Ledger | Done |
-| Lesson 48 — Item | Done |
-| Lesson 49 — Pack | Done |
-| Lesson 50 — Practice | Done |
-| Lesson 51 — Creature | Done |
+Finished lessons sit on one row per phase.
+
+| Phase | Lessons | Status |
+| --- | --- | --- |
+| 1 · Language | 1 Values and types · 2 Variables and scope · 3 Operators and conditionals · 4 Loops and functions · 5 Tables · 6 Strings · 7 Iterators · 8 Functions as values · 9 Modules and require | Done |
+| 2 · Language | 10 Metatables · 11 Metamethods · 12 Closures · 13 Coroutines · 14 Objects · 15 Errors · 16 Files · 17 Memory · 18 Lua 5.1 and 5.4 · 19 LuaJIT | Done |
+| 3 · Engineering | 20 Modular architecture · 21 Responsibilities · 22 Encapsulation · 23 Composition and inheritance · 24 Strategy · 25 Unit tests · 26 Debugging · 27 Logging · 28 Performance · 29 Git practice | Done |
+| 4 · Systems | 30 Player · 31 Creature · 32 Item · 33 Inventory · 34 Experience · 35 Combat · 36 Skills · 37 Quest · 38 NPC dialogue · 39 Events | Done |
+| 5 · Portfolio | 40 RPG core · 41 Turn · 42 Encounter · 43 Reward · 44 Spoils · 45 Hunt · 46 Brief · 47 Ledger · 48 Item · 49 Pack · 50 Practice · 51 Creature | Done |
