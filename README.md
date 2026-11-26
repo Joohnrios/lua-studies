@@ -62,3 +62,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 24 — Strategy | Done |
 | Lesson 25 — Unit tests | Done |
 | Lesson 26 — Debugging | Done |
+| Lesson 27 — Logging | Done |
