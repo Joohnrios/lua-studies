@@ -84,3 +84,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 46 — Brief | Done |
 | Lesson 47 — Ledger | Done |
 | Lesson 48 — Item | Done |
+| Lesson 49 — Pack | Done |

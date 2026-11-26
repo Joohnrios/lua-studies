@@ -20,6 +20,8 @@ brief.lua       speaks while the hunt is open, and closes it when done
 events.lua      records names in the order they happen
 ledger.lua      stores each line the brief speaks
 item.lua        asks the player to heal, and keeps its own label
+inventory.lua   stacks items by name and removes an empty stack
+pack.lua        drinks one potion when the bag still holds one
 ```
 
 ## Run an example
@@ -36,6 +38,7 @@ lua lessons/45-hunt/examples/main.lua
 lua lessons/46-brief/examples/main.lua
 lua lessons/47-ledger/examples/main.lua
 lua lessons/48-item/examples/main.lua
+lua lessons/49-pack/examples/main.lua
 ```
 
 ## Player
@@ -103,3 +106,11 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Item
 
 `Item.new(name, kind, heal)` stores the name, the kind, and the heal amount. `use` calls `player:heal` and returns the hit points from the player. `label` returns the name, a space, and the kind. `full` is true when `hp` equals `max_hp`. It does not heal.
+
+## Inventory
+
+`Inventory.new` starts with no slots. `add` increases the stack of the same name, or appends a new stack. `count` returns that stack, or `0` when the name is missing. `take` subtracts from the stack. At zero it removes the slot and returns `0`.
+
+## Pack
+
+`Pack.new(inventory, item)` stores the two modules. `drink` returns the current HP when `count` for the item name is below 1. Otherwise it takes 1 and calls `item:use`. `stock` returns that count. It does not drink.
