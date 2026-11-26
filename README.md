@@ -73,3 +73,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 35 — Combat | Done |
 | Lesson 36 — Skills | Done |
 | Lesson 37 — Quest | Done |
+| Lesson 38 — NPC dialogue | Done |
