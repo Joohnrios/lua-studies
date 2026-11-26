@@ -28,6 +28,7 @@ creature.lua    owns hit points, place, and whether it still stands
 watch.lua       asks the creature whether it shares the player's tile
 strike.lua      swings only when the creature is ready
 mark.lua        records hit when the HP drops, and miss when it stays
+round.lua       repeats a blow until the creature faints or the limit ends
 ```
 
 ## Run an example
@@ -49,6 +50,7 @@ lua lessons/50-practice/examples/main.lua
 lua lessons/51-creature/examples/main.lua
 lua lessons/52-strike/examples/main.lua
 lua lessons/53-mark/examples/main.lua
+lua lessons/54-round/examples/main.lua
 ```
 
 ## Player
@@ -148,3 +150,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Mark
 
 `Mark.new(strike, events)` stores the two modules. `land` calls `strike:hit`. When the HP drops, it emits `"hit"`. When the HP stays, it emits `"miss"`. It returns the hit points from the strike. `latest` returns `events:last`. An empty log returns nil. It does not land.
+
+## Round
+
+`Round.new(mark, creature, limit)` stores the mark, the creature, and the step limit. `fight` calls `mark:land` while the step count is below the limit and `creature:alive` is true. It returns how many steps ran. `hits` returns how many `"hit"` words the mark recorded. It does not fight.
