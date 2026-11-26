@@ -27,6 +27,7 @@ practice.lua    trains one use when a drink leaves the bag
 creature.lua    owns hit points, place, and whether it still stands
 watch.lua       asks the creature whether it shares the player's tile
 strike.lua      swings only when the creature is ready
+mark.lua        records hit when the HP drops, and miss when it stays
 ```
 
 ## Run an example
@@ -47,6 +48,7 @@ lua lessons/49-pack/examples/main.lua
 lua lessons/50-practice/examples/main.lua
 lua lessons/51-creature/examples/main.lua
 lua lessons/52-strike/examples/main.lua
+lua lessons/53-mark/examples/main.lua
 ```
 
 ## Player
@@ -142,3 +144,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Strike
 
 `Strike.new(watch, battle)` stores the two modules. `hit` returns the creature HP when `watch:ready` is false. Otherwise it calls `battle:swing` and returns the hit points that remain. `hold` returns the creature HP. It does not swing.
+
+## Mark
+
+`Mark.new(strike, events)` stores the two modules. `land` calls `strike:hit`. When the HP drops, it emits `"hit"`. When the HP stays, it emits `"miss"`. It returns the hit points from the strike. `latest` returns `events:last`. An empty log returns nil. It does not land.
