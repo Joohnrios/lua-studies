@@ -22,6 +22,8 @@ ledger.lua      stores each line the brief speaks
 item.lua        asks the player to heal, and keeps its own label
 inventory.lua   stacks items by name and removes an empty stack
 pack.lua        drinks one potion when the bag still holds one
+skill.lua       rank rises by one step for every five uses
+practice.lua    trains one use when a drink leaves the bag
 ```
 
 ## Run an example
@@ -39,6 +41,7 @@ lua lessons/46-brief/examples/main.lua
 lua lessons/47-ledger/examples/main.lua
 lua lessons/48-item/examples/main.lua
 lua lessons/49-pack/examples/main.lua
+lua lessons/50-practice/examples/main.lua
 ```
 
 ## Player
@@ -114,3 +117,11 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Pack
 
 `Pack.new(inventory, item)` stores the two modules. `drink` returns the current HP when `count` for the item name is below 1. Otherwise it takes 1 and calls `item:use`. `stock` returns that count. It does not drink.
+
+## Skill
+
+`Skill.new(name)` starts at rank `1` with `0` uses. `train` adds the amount and sets the rank to `1 + uses // 5`. An amount below 1 leaves the rank unchanged. `progress` returns `uses % 5`.
+
+## Practice
+
+`Practice.new(pack, skill)` stores the two modules. `sip` reads `stock`, calls `drink`, and calls `skill:train(1)` when the stock was above zero. It returns the hit points from the pack. An empty bag does not train. `step` returns `skill:progress`. It does not sip and it does not train.
