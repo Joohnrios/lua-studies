@@ -78,3 +78,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 40 — RPG core | Done |
 | Lesson 41 — Turn | Done |
 | Lesson 42 — Encounter | Done |
+| Lesson 43 — Reward | Done |

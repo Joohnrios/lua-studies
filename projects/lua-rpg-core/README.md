@@ -10,6 +10,8 @@ world.lua       records whether two actors share a tile
 turn.lua        asks the player to move, then asks the world to look
 battle.lua      subtracts power from a target and stops at zero
 encounter.lua   swings only when the world reports a shared tile
+experience.lua  level and the XP still short of the next level
+reward.lua      grants XP only when the target HP is zero
 ```
 
 ## Run an example
@@ -20,6 +22,7 @@ From the repository root:
 lua lessons/40-rpg-core/examples/main.lua
 lua lessons/41-turn/examples/main.lua
 lua lessons/42-encounter/examples/main.lua
+lua lessons/43-reward/examples/main.lua
 ```
 
 ## Player
@@ -47,3 +50,11 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Encounter
 
 `Encounter.new(world, battle)` stores the two modules. `act` calls `world:look`. The word `"apart"` returns `target.hp` unchanged. The word `"meet"` calls `battle:swing` and returns the hit points that remain. `spare` calls `world:look` and returns that word. The target HP stays unchanged.
+
+## Experience
+
+`Experience.new` starts at level `1` with `0` XP. The next level costs `level * 10`. `gain` adds the amount, spends that cost while the XP reaches it, and returns the level. An amount below 1 leaves the level unchanged. `room` returns the current cost minus the stored XP.
+
+## Reward
+
+`Reward.new(experience, amount)` stores the experience module and the prize. `grant` returns the current level while `target.hp` is above zero. At zero it calls `experience:gain` and returns that level. `offer` returns the prize when `target.hp` is zero, and `0` otherwise. It leaves the level and the stored XP unchanged.
