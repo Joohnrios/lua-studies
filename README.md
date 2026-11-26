@@ -79,3 +79,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 41 — Turn | Done |
 | Lesson 42 — Encounter | Done |
 | Lesson 43 — Reward | Done |
+| Lesson 44 — Spoils | Done |

@@ -12,6 +12,7 @@ battle.lua      subtracts power from a target and stops at zero
 encounter.lua   swings only when the world reports a shared tile
 experience.lua  level and the XP still short of the next level
 reward.lua      grants XP only when the target HP is zero
+spoils.lua      strikes through the encounter, then asks the reward
 ```
 
 ## Run an example
@@ -23,6 +24,7 @@ lua lessons/40-rpg-core/examples/main.lua
 lua lessons/41-turn/examples/main.lua
 lua lessons/42-encounter/examples/main.lua
 lua lessons/43-reward/examples/main.lua
+lua lessons/44-spoils/examples/main.lua
 ```
 
 ## Player
@@ -58,3 +60,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Reward
 
 `Reward.new(experience, amount)` stores the experience module and the prize. `grant` returns the current level while `target.hp` is above zero. At zero it calls `experience:gain` and returns that level. `offer` returns the prize when `target.hp` is zero, and `0` otherwise. It leaves the level and the stored XP unchanged.
+
+## Spoils
+
+`Spoils.new(encounter, reward)` stores the two modules. `collect` calls `encounter:act` and then `reward:grant`. It returns the level from the reward. `peek` calls `reward:offer` and returns that number. It does not strike, and it leaves the level and the stored XP unchanged.
