@@ -82,3 +82,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 44 — Spoils | Done |
 | Lesson 45 — Hunt | Done |
 | Lesson 46 — Brief | Done |
+| Lesson 47 — Ledger | Done |

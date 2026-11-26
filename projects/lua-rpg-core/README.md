@@ -17,6 +17,8 @@ quest.lua       goal, progress, and whether the quest is done
 hunt.lua        counts one quest step when a living target faints
 dialogue.lua    speaks the next line and remembers the step
 brief.lua       speaks while the hunt is open, and closes it when done
+events.lua      records names in the order they happen
+ledger.lua      stores each line the brief speaks
 ```
 
 ## Run an example
@@ -31,6 +33,7 @@ lua lessons/43-reward/examples/main.lua
 lua lessons/44-spoils/examples/main.lua
 lua lessons/45-hunt/examples/main.lua
 lua lessons/46-brief/examples/main.lua
+lua lessons/47-ledger/examples/main.lua
 ```
 
 ## Player
@@ -86,3 +89,11 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Brief
 
 `Brief.new(dialogue, hunt)` stores the two modules. `say` calls `hunt:report`. The word `"done"` returns the dialogue name followed by ` is done` and leaves the step unchanged. The word `"open"` calls `dialogue:next` and returns that line. `waiting` is true while the report is `"open"`, and false when it is `"done"`. It does not speak.
+
+## Events
+
+`Events.new` starts with an empty log. `emit` appends a name and returns the log length. `count` returns how many times that name appears. A missing name counts `0`. `last` returns the name at the end of the log. An empty log returns nil.
+
+## Ledger
+
+`Ledger.new(brief, events)` stores the two modules. `hear` calls `brief:say`, emits that string, and returns it. `quiet` returns `events:last`. An empty log returns nil. It does not speak and it does not emit.
