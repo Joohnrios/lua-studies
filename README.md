@@ -69,3 +69,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 31 — Creature | Done |
 | Lesson 32 — Item | Done |
 | Lesson 33 — Inventory | Done |
+| Lesson 34 — Experience | Done |
