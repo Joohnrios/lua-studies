@@ -36,36 +36,36 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Module | Status |
 | --- | --- |
 | Lua 5.4 environment | Done |
-| Lesson 1 â€” Values and types | Done |
-| Lesson 2 â€” Variables and scope | Done |
-| Lesson 3 â€” Operators and conditionals | Done |
-| Lesson 4 â€” Loops and functions | Done |
-| Lesson 5 â€” Tables | Done |
-| Lesson 6 â€” Strings | Done |
-| Lesson 7 â€” Iterators | Done |
-| Lesson 8 â€” Functions as values | Done |
-| Lesson 9 â€” Modules and require | Done |
-| Lesson 10 â€” Metatables | Done |
-| Lesson 11 â€” Metamethods | Done |
-| Lesson 12 â€” Closures | Done |
-| Lesson 13 â€” Coroutines | Done |
-| Lesson 14 â€” Objects | Done |
-| Lesson 15 â€” Errors | Done |
-| Lesson 16 â€” Files | Done |
-| Lesson 17 â€” Memory | Done |
-| Lesson 18 â€” Lua 5.1 and 5.4 | Done |
-| Lesson 19 â€” LuaJIT | Done |
-| Lesson 20 â€” Modular architecture | Done |
-| Lesson 21 â€” Responsibilities | Done |
-| Lesson 22 â€” Encapsulation | Done |
-| Lesson 23 â€” Composition and inheritance | Done |
-| Lesson 24 â€” Strategy | Done |
-| Lesson 25 â€” Unit tests | Done |
-| Lesson 26 â€” Debugging | Done |
-| Lesson 27 â€” Logging | Done |
-| Lesson 28 â€” Performance | Done |
-| Lesson 29 â€” Git practice | Done |
-| Lesson 30 â€” Player | Done |
+| Lesson 1 — Values and types | Done |
+| Lesson 2 — Variables and scope | Done |
+| Lesson 3 — Operators and conditionals | Done |
+| Lesson 4 — Loops and functions | Done |
+| Lesson 5 — Tables | Done |
+| Lesson 6 — Strings | Done |
+| Lesson 7 — Iterators | Done |
+| Lesson 8 — Functions as values | Done |
+| Lesson 9 — Modules and require | Done |
+| Lesson 10 — Metatables | Done |
+| Lesson 11 — Metamethods | Done |
+| Lesson 12 — Closures | Done |
+| Lesson 13 — Coroutines | Done |
+| Lesson 14 — Objects | Done |
+| Lesson 15 — Errors | Done |
+| Lesson 16 — Files | Done |
+| Lesson 17 — Memory | Done |
+| Lesson 18 — Lua 5.1 and 5.4 | Done |
+| Lesson 19 — LuaJIT | Done |
+| Lesson 20 — Modular architecture | Done |
+| Lesson 21 — Responsibilities | Done |
+| Lesson 22 — Encapsulation | Done |
+| Lesson 23 — Composition and inheritance | Done |
+| Lesson 24 — Strategy | Done |
+| Lesson 25 — Unit tests | Done |
+| Lesson 26 — Debugging | Done |
+| Lesson 27 — Logging | Done |
+| Lesson 28 — Performance | Done |
+| Lesson 29 — Git practice | Done |
+| Lesson 30 — Player | Done |
 | Lesson 31 — Creature | Done |
 | Lesson 32 — Item | Done |
 | Lesson 33 — Inventory | Done |
