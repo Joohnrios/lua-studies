@@ -71,3 +71,4 @@ lua lessons/01-syntax-and-types/examples/values.lua
 | Lesson 33 — Inventory | Done |
 | Lesson 34 — Experience | Done |
 | Lesson 35 — Combat | Done |
+| Lesson 36 — Skills | Done |
