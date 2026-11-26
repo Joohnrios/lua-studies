@@ -15,6 +15,8 @@ reward.lua      grants XP only when the target HP is zero
 spoils.lua      strikes through the encounter, then asks the reward
 quest.lua       goal, progress, and whether the quest is done
 hunt.lua        counts one quest step when a living target faints
+dialogue.lua    speaks the next line and remembers the step
+brief.lua       speaks while the hunt is open, and closes it when done
 ```
 
 ## Run an example
@@ -28,6 +30,7 @@ lua lessons/42-encounter/examples/main.lua
 lua lessons/43-reward/examples/main.lua
 lua lessons/44-spoils/examples/main.lua
 lua lessons/45-hunt/examples/main.lua
+lua lessons/46-brief/examples/main.lua
 ```
 
 ## Player
@@ -75,3 +78,11 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Hunt
 
 `Hunt.new(spoils, quest)` stores the two modules. `finish` calls `spoils:collect`. When the target HP was above zero and the call leaves it at zero, the hunt calls `quest:advance(1)`. It returns the level from the spoils. `report` returns the quest status, `"done"` or `"open"`.
+
+## Dialogue
+
+`Dialogue.new(name, lines)` starts at step `1`. `next` returns the line at that step and then advances it. Past the last line, it returns the name followed by ` is done` and leaves the step where it is. `finished` is true when the current step has no line.
+
+## Brief
+
+`Brief.new(dialogue, hunt)` stores the two modules. `say` calls `hunt:report`. The word `"done"` returns the dialogue name followed by ` is done` and leaves the step unchanged. The word `"open"` calls `dialogue:next` and returns that line. `waiting` is true while the report is `"open"`, and false when it is `"done"`. It does not speak.
