@@ -40,6 +40,7 @@ threshold.lua   asks the gate to pass, then asks the world to look
 visits.lua      counts shared tiles after a crossing
 permit.lua      names a meeting when the visit count is above zero
 roster.lua      stores each word the permit grants
+presence.lua    reports true only when the roster word is met
 ```
 
 ## Run an example
@@ -73,6 +74,7 @@ lua lessons/62-threshold/examples/main.lua
 lua lessons/63-visits/examples/main.lua
 lua lessons/64-permit/examples/main.lua
 lua lessons/65-roster/examples/main.lua
+lua lessons/66-presence/examples/main.lua
 ```
 
 ## Player
@@ -220,3 +222,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Roster
 
 `Roster.new(permit, events)` stores the permit and its own event log. `sign` calls `permit:grant`, emits that exact word, and returns it. The blow log, the speech log, and this log are separate objects. `quiet` returns `events:last`. An empty log returns nil. It does not sign and it does not emit.
+
+## Presence
+
+`Presence.new(roster)` stores the roster. `mark` calls `roster:sign`. It returns true when that word is `"met"`, and false when the word is `"none"`. `seen` returns whether `roster:quiet` is `"met"`. It does not mark. A missing word makes that comparison false.
