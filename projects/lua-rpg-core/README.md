@@ -68,6 +68,7 @@ ridge.lua       names a rise when the kept rise count grows
 gable.lua       records a rise and skips a hold
 eave.lua        hangs the gable and returns how many rises it kept
 fascia.lua      names a rise when the kept rise count grows
+soffit.lua      records a rise and skips a hold
 ```
 
 ## Run an example
@@ -129,6 +130,7 @@ lua lessons/90-ridge/examples/main.lua
 lua lessons/91-gable/examples/main.lua
 lua lessons/92-eave/examples/main.lua
 lua lessons/93-fascia/examples/main.lua
+lua lessons/94-soffit/examples/main.lua
 ```
 
 ## Player
@@ -388,3 +390,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Fascia
 
 `Fascia.new(eave)` stores the eave. `play` reads `eave:kept`, then calls `eave:hang`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `eave:kept` is above `0`. It does not play. Before any hang, that comparison is false.
+
+## Soffit
+
+`Soffit.new(fascia, events)` stores the fascia and its own event log. `set` calls `fascia:play`. When the word is `"rise"`, it emits that word. When the word is `"hold"`, it returns the word and does not emit. `once` returns `events:count` for `"rise"`. It does not set. An empty log returns `0`.
