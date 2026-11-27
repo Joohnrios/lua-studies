@@ -29,6 +29,7 @@ watch.lua       asks the creature whether it shares the player's tile
 strike.lua      swings only when the creature is ready
 mark.lua        records hit when the HP drops, and miss when it stays
 round.lua       repeats a blow until the creature faints or the limit ends
+verdict.lua     names a faint or a creature that is still standing
 ```
 
 ## Run an example
@@ -51,6 +52,7 @@ lua lessons/51-creature/examples/main.lua
 lua lessons/52-strike/examples/main.lua
 lua lessons/53-mark/examples/main.lua
 lua lessons/54-round/examples/main.lua
+lua lessons/55-verdict/examples/main.lua
 ```
 
 ## Player
@@ -154,3 +156,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Round
 
 `Round.new(mark, creature, limit)` stores the mark, the creature, and the step limit. `fight` calls `mark:land` while the step count is below the limit and `creature:alive` is true. It returns how many steps ran. `hits` returns how many `"hit"` words the mark recorded. It does not fight.
+
+## Verdict
+
+`Verdict.new(round)` stores the round. `judge` calls `round:fight`. A creature that is still alive returns `"stand"`. A creature that fainted returns `"faint"`. `tally` returns `round:hits`. It does not judge.
