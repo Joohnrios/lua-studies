@@ -57,6 +57,7 @@ meter.lua       names a rise when the kept count grows
 clef.lua        records a rise and skips a hold
 march.lua       names a move when the player's x changes
 trail.lua       records a move and skips a still walk
+pace.lua        takes a step and returns how many moves the trail kept
 ```
 
 ## Run an example
@@ -107,6 +108,7 @@ lua lessons/79-meter/examples/main.lua
 lua lessons/80-clef/examples/main.lua
 lua lessons/81-march/examples/main.lua
 lua lessons/82-trail/examples/main.lua
+lua lessons/83-pace/examples/main.lua
 ```
 
 ## Player
@@ -322,3 +324,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Trail
 
 `Trail.new(march, events)` stores the march and its own event log. `step` calls `march:walk`. When the word is `"moved"`, it emits that word. When the word is `"still"`, it returns the word and does not emit. `moves` returns `events:count` for `"moved"`. It does not step. An empty log returns `0`.
+
+## Pace
+
+`Pace.new(trail)` stores the trail. `take` calls `trail:step`, then returns `trail:moves`. A `"still"` word leaves that count unchanged. `kept` returns `trail:moves`. It does not take. Before any take, the count is `0`.
