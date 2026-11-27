@@ -49,6 +49,7 @@ chime.lua       records a new word and skips a repeat
 peal.lua        sounds the chime and returns how many new words it kept
 chord.lua       names a rise when the kept count grows
 phrase.lua      stores each word the chord plays
+refrain.lua     counts how many times the latest word appears
 ```
 
 ## Run an example
@@ -91,6 +92,7 @@ lua lessons/71-chime/examples/main.lua
 lua lessons/72-peal/examples/main.lua
 lua lessons/73-chord/examples/main.lua
 lua lessons/74-phrase/examples/main.lua
+lua lessons/75-refrain/examples/main.lua
 ```
 
 ## Player
@@ -274,3 +276,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Phrase
 
 `Phrase.new(chord, events)` stores the chord and its own event log. `say` calls `chord:play`, emits that exact word, and returns it. Both `"rise"` and `"hold"` are recorded. `latest` returns `events:last`. It does not say. An empty log returns nil.
+
+## Refrain
+
+`Refrain.new(phrase, events)` stores the phrase and the same event log. `sing` calls `phrase:say`, then returns `events:count` for that word. The same word adds up. A different word starts again at `1`. `copies` returns `events:count` for `phrase:latest`. It does not sing. Before any word, that count is `0`.
