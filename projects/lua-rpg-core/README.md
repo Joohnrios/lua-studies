@@ -34,6 +34,7 @@ payout.lua      asks for the verdict, then asks the reward to grant
 order.lua       counts one quest step when a living creature faints
 notice.lua      speaks while the order is open, and closes it when done
 docket.lua      stores each line the notice speaks
+stamp.lua       names a closing line and leaves the other lines open
 ```
 
 ## Run an example
@@ -180,3 +181,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Docket
 
 `Docket.new(notice, events)` stores the notice and the event log. `hear` calls `notice:say`, emits that exact string, and returns it. The blow log and the speech log are separate objects. `quiet` returns `events:last`. An empty log returns nil. It does not speak and it does not emit.
+
+## Stamp
+
+`Stamp.new(docket, name)` stores the docket and the speaker name. `press` calls `docket:hear`. When that line is the name followed by `" is done"`, it returns `"closed"`. Any other line returns `"open"`. `read` returns `docket:quiet`. An empty log returns nil. It does not press.
