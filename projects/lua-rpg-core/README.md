@@ -61,6 +61,7 @@ pace.lua        takes a step and returns how many moves the trail kept
 stride.lua      names a rise when the kept move count grows
 lane.lua        records a rise and skips a hold
 bridge.lua      spans the lane and returns how many rises it kept
+arch.lua        names a rise when the kept rise count grows
 ```
 
 ## Run an example
@@ -115,6 +116,7 @@ lua lessons/83-pace/examples/main.lua
 lua lessons/84-stride/examples/main.lua
 lua lessons/85-lane/examples/main.lua
 lua lessons/86-bridge/examples/main.lua
+lua lessons/87-arch/examples/main.lua
 ```
 
 ## Player
@@ -346,3 +348,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Bridge
 
 `Bridge.new(lane)` stores the lane. `span` calls `lane:cross`, then returns `lane:once`. A `"hold"` word leaves that count unchanged. `kept` returns `lane:once`. It does not span. Before any span, the count is `0`.
+
+## Arch
+
+`Arch.new(bridge)` stores the bridge. `play` reads `bridge:kept`, then calls `bridge:span`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `bridge:kept` is above `0`. It does not play. Before any span, that comparison is false.
