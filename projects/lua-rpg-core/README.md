@@ -37,6 +37,7 @@ docket.lua      stores each line the notice speaks
 stamp.lua       names a closing line and leaves the other lines open
 gate.lua        steps forward only when the stamp is closed
 threshold.lua   asks the gate to pass, then asks the world to look
+visits.lua      counts shared tiles after a crossing
 ```
 
 ## Run an example
@@ -67,6 +68,7 @@ lua lessons/59-docket/examples/main.lua
 lua lessons/60-stamp/examples/main.lua
 lua lessons/61-gate/examples/main.lua
 lua lessons/62-threshold/examples/main.lua
+lua lessons/63-visits/examples/main.lua
 ```
 
 ## Player
@@ -202,3 +204,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Threshold
 
 `Threshold.new(gate, world)` stores the gate and the world. `cross` calls `gate:pass`, then returns `world:look`. The world records `"meet"` or `"apart"`. `glance` returns `world:look`. It does not cross.
+
+## Visits
+
+`Visits.new(threshold, world)` stores the threshold and the world. `step` calls `threshold:cross`, then returns `world:meetings`. An `"apart"` entry stays in the world log and does not increase that count. `total` returns `world:meetings`. It does not cross.
