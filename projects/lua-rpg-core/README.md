@@ -65,6 +65,7 @@ arch.lua        names a rise when the kept rise count grows
 vault.lua       records a rise and skips a hold
 roof.lua        covers the vault and returns how many rises it kept
 ridge.lua       names a rise when the kept rise count grows
+gable.lua       records a rise and skips a hold
 ```
 
 ## Run an example
@@ -123,6 +124,7 @@ lua lessons/87-arch/examples/main.lua
 lua lessons/88-vault/examples/main.lua
 lua lessons/89-roof/examples/main.lua
 lua lessons/90-ridge/examples/main.lua
+lua lessons/91-gable/examples/main.lua
 ```
 
 ## Player
@@ -370,3 +372,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Ridge
 
 `Ridge.new(roof)` stores the roof. `play` reads `roof:kept`, then calls `roof:cover`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `roof:kept` is above `0`. It does not play. Before any cover, that comparison is false.
+
+## Gable
+
+`Gable.new(ridge, events)` stores the ridge and its own event log. `fit` calls `ridge:play`. When the word is `"rise"`, it emits that word. When the word is `"hold"`, it returns the word and does not emit. `once` returns `events:count` for `"rise"`. It does not fit. An empty log returns `0`.
