@@ -64,6 +64,7 @@ bridge.lua      spans the lane and returns how many rises it kept
 arch.lua        names a rise when the kept rise count grows
 vault.lua       records a rise and skips a hold
 roof.lua        covers the vault and returns how many rises it kept
+ridge.lua       names a rise when the kept rise count grows
 ```
 
 ## Run an example
@@ -121,6 +122,7 @@ lua lessons/86-bridge/examples/main.lua
 lua lessons/87-arch/examples/main.lua
 lua lessons/88-vault/examples/main.lua
 lua lessons/89-roof/examples/main.lua
+lua lessons/90-ridge/examples/main.lua
 ```
 
 ## Player
@@ -364,3 +366,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Roof
 
 `Roof.new(vault)` stores the vault. `cover` calls `vault:lay`, then returns `vault:once`. A `"hold"` word leaves that count unchanged. `kept` returns `vault:once`. It does not cover. Before any cover, the count is `0`.
+
+## Ridge
+
+`Ridge.new(roof)` stores the roof. `play` reads `roof:kept`, then calls `roof:cover`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `roof:kept` is above `0`. It does not play. Before any cover, that comparison is false.
