@@ -44,6 +44,7 @@ presence.lua    reports true only when the roster word is met
 welcome.lua     speaks the next line when the presence is true
 desk.lua        stores each line the welcome speaks
 slip.lua        counts how many times the latest greeting appears
+echo.lua        names a first greeting and a repeated one
 ```
 
 ## Run an example
@@ -81,6 +82,7 @@ lua lessons/66-presence/examples/main.lua
 lua lessons/67-welcome/examples/main.lua
 lua lessons/68-desk/examples/main.lua
 lua lessons/69-slip/examples/main.lua
+lua lessons/70-echo/examples/main.lua
 ```
 
 ## Player
@@ -244,3 +246,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Slip
 
 `Slip.new(desk, events)` stores the desk and the same event log. `file` calls `desk:receive`, then returns `events:count` for that line. A new line starts its own count at `1`. `copies` returns that count for the latest line. It does not file. An empty log returns `0`.
+
+## Echo
+
+`Echo.new(slip)` stores the slip. `hear` calls `slip:file`. A count of `1` returns `"new"`. A count above `1` returns `"again"`. A different line starts again at `"new"`. `fresh` returns whether `slip:copies` is `1`. It does not hear. Before any line, that comparison is false.
