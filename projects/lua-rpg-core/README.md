@@ -50,6 +50,7 @@ peal.lua        sounds the chime and returns how many new words it kept
 chord.lua       names a rise when the kept count grows
 phrase.lua      stores each word the chord plays
 refrain.lua     counts how many times the latest word appears
+cue.lua         names a first count and a repeated one
 ```
 
 ## Run an example
@@ -93,6 +94,7 @@ lua lessons/72-peal/examples/main.lua
 lua lessons/73-chord/examples/main.lua
 lua lessons/74-phrase/examples/main.lua
 lua lessons/75-refrain/examples/main.lua
+lua lessons/76-cue/examples/main.lua
 ```
 
 ## Player
@@ -280,3 +282,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Refrain
 
 `Refrain.new(phrase, events)` stores the phrase and the same event log. `sing` calls `phrase:say`, then returns `events:count` for that word. The same word adds up. A different word starts again at `1`. `copies` returns `events:count` for `phrase:latest`. It does not sing. Before any word, that count is `0`.
+
+## Cue
+
+`Cue.new(refrain)` stores the refrain. `call` calls `refrain:sing`. A count of `1` returns `"first"`. A count above `1` returns `"more"`. A different word starts again at `"first"`. `fresh` returns whether `refrain:copies` is `1`. It does not call. Before any word, that comparison is false.
