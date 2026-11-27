@@ -52,6 +52,7 @@ phrase.lua      stores each word the chord plays
 refrain.lua     counts how many times the latest word appears
 cue.lua         names a first count and a repeated one
 spot.lua        records a first word and skips a repeat
+pulse.lua       beats the spot and returns how many first words it kept
 ```
 
 ## Run an example
@@ -97,6 +98,7 @@ lua lessons/74-phrase/examples/main.lua
 lua lessons/75-refrain/examples/main.lua
 lua lessons/76-cue/examples/main.lua
 lua lessons/77-spot/examples/main.lua
+lua lessons/78-pulse/examples/main.lua
 ```
 
 ## Player
@@ -292,3 +294,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Spot
 
 `Spot.new(cue, events)` stores the cue and its own event log. `mark` calls `cue:call`. When the word is `"first"`, it emits that word. When the word is `"more"`, it returns the word and does not emit. `once` returns `events:count` for `"first"`. It does not mark. An empty log returns `0`.
+
+## Pulse
+
+`Pulse.new(spot)` stores the spot. `beat` calls `spot:mark`, then returns `spot:once`. A `"more"` word leaves that count unchanged. `kept` returns `spot:once`. It does not beat. Before any beat, the count is `0`.
