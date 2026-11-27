@@ -71,6 +71,7 @@ fascia.lua      names a rise when the kept rise count grows
 soffit.lua      records a rise and skips a hold
 barge.lua       trims the soffit and returns how many rises it kept
 rake.lua        names a rise when the kept rise count grows
+purlin.lua      records a rise and skips a hold
 ```
 
 ## Run an example
@@ -135,6 +136,7 @@ lua lessons/93-fascia/examples/main.lua
 lua lessons/94-soffit/examples/main.lua
 lua lessons/95-barge/examples/main.lua
 lua lessons/96-rake/examples/main.lua
+lua lessons/97-purlin/examples/main.lua
 ```
 
 ## Player
@@ -406,3 +408,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Rake
 
 `Rake.new(barge)` stores the barge. `play` reads `barge:kept`, then calls `barge:trim`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `barge:kept` is above `0`. It does not play. Before any trim, that comparison is false.
+
+## Purlin
+
+`Purlin.new(rake, events)` stores the rake and its own event log. `seat` calls `rake:play`. When the word is `"rise"`, it emits that word. When the word is `"hold"`, it returns the word and does not emit. `once` returns `events:count` for `"rise"`. It does not seat. An empty log returns `0`.
