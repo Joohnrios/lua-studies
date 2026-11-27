@@ -36,6 +36,7 @@ notice.lua      speaks while the order is open, and closes it when done
 docket.lua      stores each line the notice speaks
 stamp.lua       names a closing line and leaves the other lines open
 gate.lua        steps forward only when the stamp is closed
+threshold.lua   asks the gate to pass, then asks the world to look
 ```
 
 ## Run an example
@@ -65,6 +66,7 @@ lua lessons/58-notice/examples/main.lua
 lua lessons/59-docket/examples/main.lua
 lua lessons/60-stamp/examples/main.lua
 lua lessons/61-gate/examples/main.lua
+lua lessons/62-threshold/examples/main.lua
 ```
 
 ## Player
@@ -196,3 +198,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Gate
 
 `Gate.new(stamp, player)` stores the stamp and the player. `pass` calls `stamp:press`. When the word is `"closed"`, it calls `player:move(1, 0)` and returns `x`, `y`, and `z`. When the word is `"open"`, it returns the current coordinates and does not move. `place` returns those three coordinates. It does not pass.
+
+## Threshold
+
+`Threshold.new(gate, world)` stores the gate and the world. `cross` calls `gate:pass`, then returns `world:look`. The world records `"meet"` or `"apart"`. `glance` returns `world:look`. It does not cross.

@@ -41,4 +41,4 @@ Finished lessons sit on one row per phase.
 | 2 · Language | 10 Metatables · 11 Metamethods · 12 Closures · 13 Coroutines · 14 Objects · 15 Errors · 16 Files · 17 Memory · 18 Lua 5.1 and 5.4 · 19 LuaJIT | Done |
 | 3 · Engineering | 20 Modular architecture · 21 Responsibilities · 22 Encapsulation · 23 Composition and inheritance · 24 Strategy · 25 Unit tests · 26 Debugging · 27 Logging · 28 Performance · 29 Git practice | Done |
 | 4 · Systems | 30 Player · 31 Creature · 32 Item · 33 Inventory · 34 Experience · 35 Combat · 36 Skills · 37 Quest · 38 NPC dialogue · 39 Events | Done |
-| 5 · Portfolio | 40 RPG core · 41 Turn · 42 Encounter · 43 Reward · 44 Spoils · 45 Hunt · 46 Brief · 47 Ledger · 48 Item · 49 Pack · 50 Practice · 51 Creature · 52 Strike · 53 Mark · 54 Round · 55 Verdict · 56 Payout · 57 Order · 58 Notice · 59 Docket · 60 Stamp · 61 Gate | Done |
+| 5 · Portfolio | 40 RPG core · 41 Turn · 42 Encounter · 43 Reward · 44 Spoils · 45 Hunt · 46 Brief · 47 Ledger · 48 Item · 49 Pack · 50 Practice · 51 Creature · 52 Strike · 53 Mark · 54 Round · 55 Verdict · 56 Payout · 57 Order · 58 Notice · 59 Docket · 60 Stamp · 61 Gate · 62 Threshold | Done |
