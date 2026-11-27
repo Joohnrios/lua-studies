@@ -46,6 +46,7 @@ desk.lua        stores each line the welcome speaks
 slip.lua        counts how many times the latest greeting appears
 echo.lua        names a first greeting and a repeated one
 chime.lua       records a new word and skips a repeat
+peal.lua        sounds the chime and returns how many new words it kept
 ```
 
 ## Run an example
@@ -85,6 +86,7 @@ lua lessons/68-desk/examples/main.lua
 lua lessons/69-slip/examples/main.lua
 lua lessons/70-echo/examples/main.lua
 lua lessons/71-chime/examples/main.lua
+lua lessons/72-peal/examples/main.lua
 ```
 
 ## Player
@@ -256,3 +258,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Chime
 
 `Chime.new(echo, events)` stores the echo and its own event log. `ring` calls `echo:hear`. When the word is `"new"`, it emits that word. When the word is `"again"`, it returns the word and does not emit. `once` returns `events:count` for `"new"`. It does not ring. An empty log returns `0`.
+
+## Peal
+
+`Peal.new(chime)` stores the chime. `sound` calls `chime:ring`, then returns `chime:once`. A repeated word leaves that count unchanged. `kept` returns `chime:once`. It does not sound. Before any sound, the count is `0`.
