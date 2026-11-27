@@ -39,6 +39,7 @@ gate.lua        steps forward only when the stamp is closed
 threshold.lua   asks the gate to pass, then asks the world to look
 visits.lua      counts shared tiles after a crossing
 permit.lua      names a meeting when the visit count is above zero
+roster.lua      stores each word the permit grants
 ```
 
 ## Run an example
@@ -71,6 +72,7 @@ lua lessons/61-gate/examples/main.lua
 lua lessons/62-threshold/examples/main.lua
 lua lessons/63-visits/examples/main.lua
 lua lessons/64-permit/examples/main.lua
+lua lessons/65-roster/examples/main.lua
 ```
 
 ## Player
@@ -214,3 +216,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Permit
 
 `Permit.new(visits)` stores the visits. `grant` calls `visits:step`. When `visits:total` is above zero, it returns `"met"`. When the total is still zero, it returns `"none"`. A later `"apart"` does not erase an earlier meeting. `held` returns `visits:total`. It does not grant.
+
+## Roster
+
+`Roster.new(permit, events)` stores the permit and its own event log. `sign` calls `permit:grant`, emits that exact word, and returns it. The blow log, the speech log, and this log are separate objects. `quiet` returns `events:last`. An empty log returns nil. It does not sign and it does not emit.
