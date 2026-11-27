@@ -51,6 +51,7 @@ chord.lua       names a rise when the kept count grows
 phrase.lua      stores each word the chord plays
 refrain.lua     counts how many times the latest word appears
 cue.lua         names a first count and a repeated one
+spot.lua        records a first word and skips a repeat
 ```
 
 ## Run an example
@@ -95,6 +96,7 @@ lua lessons/73-chord/examples/main.lua
 lua lessons/74-phrase/examples/main.lua
 lua lessons/75-refrain/examples/main.lua
 lua lessons/76-cue/examples/main.lua
+lua lessons/77-spot/examples/main.lua
 ```
 
 ## Player
@@ -286,3 +288,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Cue
 
 `Cue.new(refrain)` stores the refrain. `call` calls `refrain:sing`. A count of `1` returns `"first"`. A count above `1` returns `"more"`. A different word starts again at `"first"`. `fresh` returns whether `refrain:copies` is `1`. It does not call. Before any word, that comparison is false.
+
+## Spot
+
+`Spot.new(cue, events)` stores the cue and its own event log. `mark` calls `cue:call`. When the word is `"first"`, it emits that word. When the word is `"more"`, it returns the word and does not emit. `once` returns `events:count` for `"first"`. It does not mark. An empty log returns `0`.
