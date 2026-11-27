@@ -47,6 +47,7 @@ slip.lua        counts how many times the latest greeting appears
 echo.lua        names a first greeting and a repeated one
 chime.lua       records a new word and skips a repeat
 peal.lua        sounds the chime and returns how many new words it kept
+chord.lua       names a rise when the kept count grows
 ```
 
 ## Run an example
@@ -87,6 +88,7 @@ lua lessons/69-slip/examples/main.lua
 lua lessons/70-echo/examples/main.lua
 lua lessons/71-chime/examples/main.lua
 lua lessons/72-peal/examples/main.lua
+lua lessons/73-chord/examples/main.lua
 ```
 
 ## Player
@@ -262,3 +264,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Peal
 
 `Peal.new(chime)` stores the chime. `sound` calls `chime:ring`, then returns `chime:once`. A repeated word leaves that count unchanged. `kept` returns `chime:once`. It does not sound. Before any sound, the count is `0`.
+
+## Chord
+
+`Chord.new(peal)` stores the peal. `play` reads `peal:kept`, then calls `peal:sound`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `peal:kept` is above `0`. It does not play. Before any sound, that comparison is false.
