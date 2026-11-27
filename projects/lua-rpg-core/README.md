@@ -42,6 +42,7 @@ permit.lua      names a meeting when the visit count is above zero
 roster.lua      stores each word the permit grants
 presence.lua    reports true only when the roster word is met
 welcome.lua     speaks the next line when the presence is true
+desk.lua        stores each line the welcome speaks
 ```
 
 ## Run an example
@@ -77,6 +78,7 @@ lua lessons/64-permit/examples/main.lua
 lua lessons/65-roster/examples/main.lua
 lua lessons/66-presence/examples/main.lua
 lua lessons/67-welcome/examples/main.lua
+lua lessons/68-desk/examples/main.lua
 ```
 
 ## Player
@@ -232,3 +234,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Welcome
 
 `Welcome.new(presence, dialogue)` stores the presence and its own dialogue. `greet` calls `presence:mark`. When that result is true, it returns `dialogue:next`. When the result is false, it returns the speaker name followed by `" is away"` and leaves the step unchanged. `status` returns `"here"` when `presence:seen` is true, and `"away"` when it is false. It does not greet.
+
+## Desk
+
+`Desk.new(welcome, events)` stores the welcome and its own event log. `receive` calls `welcome:greet`, emits that exact line, and returns it. The blow log, the speech log, the permit log, and this log are separate objects. `quiet` returns `events:last`. An empty log returns nil. It does not receive and it does not emit.
