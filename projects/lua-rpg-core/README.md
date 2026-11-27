@@ -30,6 +30,7 @@ strike.lua      swings only when the creature is ready
 mark.lua        records hit when the HP drops, and miss when it stays
 round.lua       repeats a blow until the creature faints or the limit ends
 verdict.lua     names a faint or a creature that is still standing
+payout.lua      asks for the verdict, then asks the reward to grant
 ```
 
 ## Run an example
@@ -160,3 +161,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Verdict
 
 `Verdict.new(round)` stores the round. `judge` calls `round:fight`. A creature that is still alive returns `"stand"`. A creature that fainted returns `"faint"`. `tally` returns `round:hits`. It does not judge.
+
+## Payout
+
+`Payout.new(verdict, reward, creature)` stores the verdict, the reward, and the creature. `close` calls `verdict:judge`, then returns `reward:grant`. A living creature leaves the level unchanged. A faint pays the prize. `quote` returns `reward:offer`. It does not judge and it does not grant.
