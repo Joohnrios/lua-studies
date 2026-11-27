@@ -41,6 +41,7 @@ visits.lua      counts shared tiles after a crossing
 permit.lua      names a meeting when the visit count is above zero
 roster.lua      stores each word the permit grants
 presence.lua    reports true only when the roster word is met
+welcome.lua     speaks the next line when the presence is true
 ```
 
 ## Run an example
@@ -75,6 +76,7 @@ lua lessons/63-visits/examples/main.lua
 lua lessons/64-permit/examples/main.lua
 lua lessons/65-roster/examples/main.lua
 lua lessons/66-presence/examples/main.lua
+lua lessons/67-welcome/examples/main.lua
 ```
 
 ## Player
@@ -226,3 +228,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Presence
 
 `Presence.new(roster)` stores the roster. `mark` calls `roster:sign`. It returns true when that word is `"met"`, and false when the word is `"none"`. `seen` returns whether `roster:quiet` is `"met"`. It does not mark. A missing word makes that comparison false.
+
+## Welcome
+
+`Welcome.new(presence, dialogue)` stores the presence and its own dialogue. `greet` calls `presence:mark`. When that result is true, it returns `dialogue:next`. When the result is false, it returns the speaker name followed by `" is away"` and leaves the step unchanged. `status` returns `"here"` when `presence:seen` is true, and `"away"` when it is false. It does not greet.
