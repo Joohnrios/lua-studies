@@ -48,6 +48,7 @@ echo.lua        names a first greeting and a repeated one
 chime.lua       records a new word and skips a repeat
 peal.lua        sounds the chime and returns how many new words it kept
 chord.lua       names a rise when the kept count grows
+phrase.lua      stores each word the chord plays
 ```
 
 ## Run an example
@@ -89,6 +90,7 @@ lua lessons/70-echo/examples/main.lua
 lua lessons/71-chime/examples/main.lua
 lua lessons/72-peal/examples/main.lua
 lua lessons/73-chord/examples/main.lua
+lua lessons/74-phrase/examples/main.lua
 ```
 
 ## Player
@@ -268,3 +270,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Chord
 
 `Chord.new(peal)` stores the peal. `play` reads `peal:kept`, then calls `peal:sound`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `peal:kept` is above `0`. It does not play. Before any sound, that comparison is false.
+
+## Phrase
+
+`Phrase.new(chord, events)` stores the chord and its own event log. `say` calls `chord:play`, emits that exact word, and returns it. Both `"rise"` and `"hold"` are recorded. `latest` returns `events:last`. It does not say. An empty log returns nil.
