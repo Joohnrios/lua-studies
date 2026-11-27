@@ -43,6 +43,7 @@ roster.lua      stores each word the permit grants
 presence.lua    reports true only when the roster word is met
 welcome.lua     speaks the next line when the presence is true
 desk.lua        stores each line the welcome speaks
+slip.lua        counts how many times the latest greeting appears
 ```
 
 ## Run an example
@@ -79,6 +80,7 @@ lua lessons/65-roster/examples/main.lua
 lua lessons/66-presence/examples/main.lua
 lua lessons/67-welcome/examples/main.lua
 lua lessons/68-desk/examples/main.lua
+lua lessons/69-slip/examples/main.lua
 ```
 
 ## Player
@@ -238,3 +240,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Desk
 
 `Desk.new(welcome, events)` stores the welcome and its own event log. `receive` calls `welcome:greet`, emits that exact line, and returns it. The blow log, the speech log, the permit log, and this log are separate objects. `quiet` returns `events:last`. An empty log returns nil. It does not receive and it does not emit.
+
+## Slip
+
+`Slip.new(desk, events)` stores the desk and the same event log. `file` calls `desk:receive`, then returns `events:count` for that line. A new line starts its own count at `1`. `copies` returns that count for the latest line. It does not file. An empty log returns `0`.
