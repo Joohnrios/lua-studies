@@ -74,6 +74,7 @@ rake.lua        names a rise when the kept rise count grows
 purlin.lua      records a rise and skips a hold
 hip.lua         raises the purlin and returns how many rises it kept
 valley.lua      names a rise when the kept rise count grows
+rafter.lua      records a rise and skips a hold
 ```
 
 ## Run an example
@@ -141,6 +142,7 @@ lua lessons/96-rake/examples/main.lua
 lua lessons/97-purlin/examples/main.lua
 lua lessons/98-hip/examples/main.lua
 lua lessons/99-valley/examples/main.lua
+lua lessons/100-rafter/examples/main.lua
 ```
 
 ## Player
@@ -424,3 +426,9 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Valley
 
 `Valley.new(hip)` stores the hip. `play` reads `hip:kept`, then calls `hip:raise`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `hip:kept` is above `0`. It does not play. Before any raise, that comparison is false.
+
+## Rafter
+
+`Rafter.new(valley, events)` stores the valley and its own event log. `place` calls `valley:play`. When the word is `"rise"`, it emits that word. When the word is `"hold"`, it returns the word and does not emit. `once` returns `events:count` for `"rise"`. It does not place. An empty log returns `0`.
+
+Lessons from the echo through the rafter repeat the same four questions: name a word, record a rise, return the count, and compare the count before and after.
