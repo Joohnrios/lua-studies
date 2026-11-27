@@ -53,6 +53,7 @@ refrain.lua     counts how many times the latest word appears
 cue.lua         names a first count and a repeated one
 spot.lua        records a first word and skips a repeat
 pulse.lua       beats the spot and returns how many first words it kept
+meter.lua       names a rise when the kept count grows
 ```
 
 ## Run an example
@@ -99,6 +100,7 @@ lua lessons/75-refrain/examples/main.lua
 lua lessons/76-cue/examples/main.lua
 lua lessons/77-spot/examples/main.lua
 lua lessons/78-pulse/examples/main.lua
+lua lessons/79-meter/examples/main.lua
 ```
 
 ## Player
@@ -298,3 +300,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Pulse
 
 `Pulse.new(spot)` stores the spot. `beat` calls `spot:mark`, then returns `spot:once`. A `"more"` word leaves that count unchanged. `kept` returns `spot:once`. It does not beat. Before any beat, the count is `0`.
+
+## Meter
+
+`Meter.new(pulse)` stores the pulse. `play` reads `pulse:kept`, then calls `pulse:beat`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `pulse:kept` is above `0`. It does not play. Before any beat, that comparison is false.
