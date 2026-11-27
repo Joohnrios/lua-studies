@@ -72,6 +72,7 @@ soffit.lua      records a rise and skips a hold
 barge.lua       trims the soffit and returns how many rises it kept
 rake.lua        names a rise when the kept rise count grows
 purlin.lua      records a rise and skips a hold
+hip.lua         raises the purlin and returns how many rises it kept
 ```
 
 ## Run an example
@@ -137,6 +138,7 @@ lua lessons/94-soffit/examples/main.lua
 lua lessons/95-barge/examples/main.lua
 lua lessons/96-rake/examples/main.lua
 lua lessons/97-purlin/examples/main.lua
+lua lessons/98-hip/examples/main.lua
 ```
 
 ## Player
@@ -412,3 +414,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Purlin
 
 `Purlin.new(rake, events)` stores the rake and its own event log. `seat` calls `rake:play`. When the word is `"rise"`, it emits that word. When the word is `"hold"`, it returns the word and does not emit. `once` returns `events:count` for `"rise"`. It does not seat. An empty log returns `0`.
+
+## Hip
+
+`Hip.new(purlin)` stores the purlin. `raise` calls `purlin:seat`, then returns `purlin:once`. A `"hold"` word leaves that count unchanged. `kept` returns `purlin:once`. It does not raise. Before any raise, the count is `0`.
