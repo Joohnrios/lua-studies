@@ -45,6 +45,7 @@ welcome.lua     speaks the next line when the presence is true
 desk.lua        stores each line the welcome speaks
 slip.lua        counts how many times the latest greeting appears
 echo.lua        names a first greeting and a repeated one
+chime.lua       records a new word and skips a repeat
 ```
 
 ## Run an example
@@ -83,6 +84,7 @@ lua lessons/67-welcome/examples/main.lua
 lua lessons/68-desk/examples/main.lua
 lua lessons/69-slip/examples/main.lua
 lua lessons/70-echo/examples/main.lua
+lua lessons/71-chime/examples/main.lua
 ```
 
 ## Player
@@ -250,3 +252,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Echo
 
 `Echo.new(slip)` stores the slip. `hear` calls `slip:file`. A count of `1` returns `"new"`. A count above `1` returns `"again"`. A different line starts again at `"new"`. `fresh` returns whether `slip:copies` is `1`. It does not hear. Before any line, that comparison is false.
+
+## Chime
+
+`Chime.new(echo, events)` stores the echo and its own event log. `ring` calls `echo:hear`. When the word is `"new"`, it emits that word. When the word is `"again"`, it returns the word and does not emit. `once` returns `events:count` for `"new"`. It does not ring. An empty log returns `0`.
