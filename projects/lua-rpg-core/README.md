@@ -56,6 +56,7 @@ pulse.lua       beats the spot and returns how many first words it kept
 meter.lua       names a rise when the kept count grows
 clef.lua        records a rise and skips a hold
 march.lua       names a move when the player's x changes
+trail.lua       records a move and skips a still walk
 ```
 
 ## Run an example
@@ -105,6 +106,7 @@ lua lessons/78-pulse/examples/main.lua
 lua lessons/79-meter/examples/main.lua
 lua lessons/80-clef/examples/main.lua
 lua lessons/81-march/examples/main.lua
+lua lessons/82-trail/examples/main.lua
 ```
 
 ## Player
@@ -316,3 +318,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## March
 
 `March.new(clef, player)` stores the clef and the player. `walk` saves `player.x`, calls `clef:mark`, and compares the coordinate. When `x` changes, it returns `"moved"`. When `x` stays the same, it returns `"still"`. The gate is the one that moves the player. `place` returns `player.x`. It does not walk.
+
+## Trail
+
+`Trail.new(march, events)` stores the march and its own event log. `step` calls `march:walk`. When the word is `"moved"`, it emits that word. When the word is `"still"`, it returns the word and does not emit. `moves` returns `events:count` for `"moved"`. It does not step. An empty log returns `0`.
