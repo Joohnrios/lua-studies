@@ -69,6 +69,7 @@ gable.lua       records a rise and skips a hold
 eave.lua        hangs the gable and returns how many rises it kept
 fascia.lua      names a rise when the kept rise count grows
 soffit.lua      records a rise and skips a hold
+barge.lua       trims the soffit and returns how many rises it kept
 ```
 
 ## Run an example
@@ -131,6 +132,7 @@ lua lessons/91-gable/examples/main.lua
 lua lessons/92-eave/examples/main.lua
 lua lessons/93-fascia/examples/main.lua
 lua lessons/94-soffit/examples/main.lua
+lua lessons/95-barge/examples/main.lua
 ```
 
 ## Player
@@ -394,3 +396,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Soffit
 
 `Soffit.new(fascia, events)` stores the fascia and its own event log. `set` calls `fascia:play`. When the word is `"rise"`, it emits that word. When the word is `"hold"`, it returns the word and does not emit. `once` returns `events:count` for `"rise"`. It does not set. An empty log returns `0`.
+
+## Barge
+
+`Barge.new(soffit)` stores the soffit. `trim` calls `soffit:set`, then returns `soffit:once`. A `"hold"` word leaves that count unchanged. `kept` returns `soffit:once`. It does not trim. Before any trim, the count is `0`.
