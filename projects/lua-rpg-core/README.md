@@ -32,6 +32,7 @@ round.lua       repeats a blow until the creature faints or the limit ends
 verdict.lua     names a faint or a creature that is still standing
 payout.lua      asks for the verdict, then asks the reward to grant
 order.lua       counts one quest step when a living creature faints
+notice.lua      speaks while the order is open, and closes it when done
 ```
 
 ## Run an example
@@ -170,3 +171,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Order
 
 `Order.new(payout, quest)` stores the payout and the quest. `fill` calls `payout:close`. It asks the quest to advance by one only when the creature was alive before that close and is not alive after it. It returns the level from the payout. `report` returns `quest:status`. It does not fill.
+
+## Notice
+
+`Notice.new(dialogue, order)` stores the dialogue and the order. `say` calls `order:report`. While that report is `"open"`, it returns `dialogue:next`. When the report is `"done"`, it returns the speaker name followed by `" is done"` and leaves the step unchanged. `waiting` returns whether `order:report` is `"open"`. It does not speak.
