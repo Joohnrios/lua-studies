@@ -59,6 +59,7 @@ march.lua       names a move when the player's x changes
 trail.lua       records a move and skips a still walk
 pace.lua        takes a step and returns how many moves the trail kept
 stride.lua      names a rise when the kept move count grows
+lane.lua        records a rise and skips a hold
 ```
 
 ## Run an example
@@ -111,6 +112,7 @@ lua lessons/81-march/examples/main.lua
 lua lessons/82-trail/examples/main.lua
 lua lessons/83-pace/examples/main.lua
 lua lessons/84-stride/examples/main.lua
+lua lessons/85-lane/examples/main.lua
 ```
 
 ## Player
@@ -334,3 +336,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Stride
 
 `Stride.new(pace)` stores the pace. `play` reads `pace:kept`, then calls `pace:take`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `pace:kept` is above `0`. It does not play. Before any take, that comparison is false.
+
+## Lane
+
+`Lane.new(stride, events)` stores the stride and its own event log. `cross` calls `stride:play`. When the word is `"rise"`, it emits that word. When the word is `"hold"`, it returns the word and does not emit. `once` returns `events:count` for `"rise"`. It does not cross. An empty log returns `0`.
