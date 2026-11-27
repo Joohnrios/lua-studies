@@ -54,6 +54,7 @@ cue.lua         names a first count and a repeated one
 spot.lua        records a first word and skips a repeat
 pulse.lua       beats the spot and returns how many first words it kept
 meter.lua       names a rise when the kept count grows
+clef.lua        records a rise and skips a hold
 ```
 
 ## Run an example
@@ -101,6 +102,7 @@ lua lessons/76-cue/examples/main.lua
 lua lessons/77-spot/examples/main.lua
 lua lessons/78-pulse/examples/main.lua
 lua lessons/79-meter/examples/main.lua
+lua lessons/80-clef/examples/main.lua
 ```
 
 ## Player
@@ -304,3 +306,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Meter
 
 `Meter.new(pulse)` stores the pulse. `play` reads `pulse:kept`, then calls `pulse:beat`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `pulse:kept` is above `0`. It does not play. Before any beat, that comparison is false.
+
+## Clef
+
+`Clef.new(meter, events)` stores the meter and its own event log. `mark` calls `meter:play`. When the word is `"rise"`, it emits that word. When the word is `"hold"`, it returns the word and does not emit. `once` returns `events:count` for `"rise"`. It does not mark. An empty log returns `0`.
