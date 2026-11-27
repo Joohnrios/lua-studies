@@ -35,6 +35,7 @@ order.lua       counts one quest step when a living creature faints
 notice.lua      speaks while the order is open, and closes it when done
 docket.lua      stores each line the notice speaks
 stamp.lua       names a closing line and leaves the other lines open
+gate.lua        steps forward only when the stamp is closed
 ```
 
 ## Run an example
@@ -58,6 +59,12 @@ lua lessons/52-strike/examples/main.lua
 lua lessons/53-mark/examples/main.lua
 lua lessons/54-round/examples/main.lua
 lua lessons/55-verdict/examples/main.lua
+lua lessons/56-payout/examples/main.lua
+lua lessons/57-order/examples/main.lua
+lua lessons/58-notice/examples/main.lua
+lua lessons/59-docket/examples/main.lua
+lua lessons/60-stamp/examples/main.lua
+lua lessons/61-gate/examples/main.lua
 ```
 
 ## Player
@@ -185,3 +192,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Stamp
 
 `Stamp.new(docket, name)` stores the docket and the speaker name. `press` calls `docket:hear`. When that line is the name followed by `" is done"`, it returns `"closed"`. Any other line returns `"open"`. `read` returns `docket:quiet`. An empty log returns nil. It does not press.
+
+## Gate
+
+`Gate.new(stamp, player)` stores the stamp and the player. `pass` calls `stamp:press`. When the word is `"closed"`, it calls `player:move(1, 0)` and returns `x`, `y`, and `z`. When the word is `"open"`, it returns the current coordinates and does not move. `place` returns those three coordinates. It does not pass.
