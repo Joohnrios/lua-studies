@@ -58,6 +58,7 @@ clef.lua        records a rise and skips a hold
 march.lua       names a move when the player's x changes
 trail.lua       records a move and skips a still walk
 pace.lua        takes a step and returns how many moves the trail kept
+stride.lua      names a rise when the kept move count grows
 ```
 
 ## Run an example
@@ -109,6 +110,7 @@ lua lessons/80-clef/examples/main.lua
 lua lessons/81-march/examples/main.lua
 lua lessons/82-trail/examples/main.lua
 lua lessons/83-pace/examples/main.lua
+lua lessons/84-stride/examples/main.lua
 ```
 
 ## Player
@@ -328,3 +330,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Pace
 
 `Pace.new(trail)` stores the trail. `take` calls `trail:step`, then returns `trail:moves`. A `"still"` word leaves that count unchanged. `kept` returns `trail:moves`. It does not take. Before any take, the count is `0`.
+
+## Stride
+
+`Stride.new(pace)` stores the pace. `play` reads `pace:kept`, then calls `pace:take`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `pace:kept` is above `0`. It does not play. Before any take, that comparison is false.
