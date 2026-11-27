@@ -66,6 +66,7 @@ vault.lua       records a rise and skips a hold
 roof.lua        covers the vault and returns how many rises it kept
 ridge.lua       names a rise when the kept rise count grows
 gable.lua       records a rise and skips a hold
+eave.lua        hangs the gable and returns how many rises it kept
 ```
 
 ## Run an example
@@ -125,6 +126,7 @@ lua lessons/88-vault/examples/main.lua
 lua lessons/89-roof/examples/main.lua
 lua lessons/90-ridge/examples/main.lua
 lua lessons/91-gable/examples/main.lua
+lua lessons/92-eave/examples/main.lua
 ```
 
 ## Player
@@ -376,3 +378,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Gable
 
 `Gable.new(ridge, events)` stores the ridge and its own event log. `fit` calls `ridge:play`. When the word is `"rise"`, it emits that word. When the word is `"hold"`, it returns the word and does not emit. `once` returns `events:count` for `"rise"`. It does not fit. An empty log returns `0`.
+
+## Eave
+
+`Eave.new(gable)` stores the gable. `hang` calls `gable:fit`, then returns `gable:once`. A `"hold"` word leaves that count unchanged. `kept` returns `gable:once`. It does not hang. Before any hang, the count is `0`.
