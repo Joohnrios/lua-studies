@@ -73,6 +73,7 @@ barge.lua       trims the soffit and returns how many rises it kept
 rake.lua        names a rise when the kept rise count grows
 purlin.lua      records a rise and skips a hold
 hip.lua         raises the purlin and returns how many rises it kept
+valley.lua      names a rise when the kept rise count grows
 ```
 
 ## Run an example
@@ -139,6 +140,7 @@ lua lessons/95-barge/examples/main.lua
 lua lessons/96-rake/examples/main.lua
 lua lessons/97-purlin/examples/main.lua
 lua lessons/98-hip/examples/main.lua
+lua lessons/99-valley/examples/main.lua
 ```
 
 ## Player
@@ -418,3 +420,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Hip
 
 `Hip.new(purlin)` stores the purlin. `raise` calls `purlin:seat`, then returns `purlin:once`. A `"hold"` word leaves that count unchanged. `kept` returns `purlin:once`. It does not raise. Before any raise, the count is `0`.
+
+## Valley
+
+`Valley.new(hip)` stores the hip. `play` reads `hip:kept`, then calls `hip:raise`. When the count grows, it returns `"rise"`. When the count stays the same, it returns `"hold"`. `open` returns whether `hip:kept` is above `0`. It does not play. Before any raise, that comparison is false.
