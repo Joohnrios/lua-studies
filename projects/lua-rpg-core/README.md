@@ -31,6 +31,7 @@ mark.lua        records hit when the HP drops, and miss when it stays
 round.lua       repeats a blow until the creature faints or the limit ends
 verdict.lua     names a faint or a creature that is still standing
 payout.lua      asks for the verdict, then asks the reward to grant
+order.lua       counts one quest step when a living creature faints
 ```
 
 ## Run an example
@@ -165,3 +166,7 @@ The actors keep their own coordinates. The world only reads them and writes the 
 ## Payout
 
 `Payout.new(verdict, reward, creature)` stores the verdict, the reward, and the creature. `close` calls `verdict:judge`, then returns `reward:grant`. A living creature leaves the level unchanged. A faint pays the prize. `quote` returns `reward:offer`. It does not judge and it does not grant.
+
+## Order
+
+`Order.new(payout, quest)` stores the payout and the quest. `fill` calls `payout:close`. It asks the quest to advance by one only when the creature was alive before that close and is not alive after it. It returns the level from the payout. `report` returns `quest:status`. It does not fill.
